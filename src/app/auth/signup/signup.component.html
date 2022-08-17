@@ -1,0 +1,82 @@
+
+<h3> Create an Account</h3>
+<!--https://angular.io/guide/property-binding-->
+<!--This is property binding!-->
+<!--The brackets, [], cause Angular to evaluate the right-hand side of the assignment as a dynamic expression.-->
+<!--NgSubmit explanation for signup requests: https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17869670#questions -->
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+  <!-- Div classes with field are replaced with reusable input class-->
+  <app-input
+    inputType="text"
+    label="Username"
+    [control]="$any(authForm.controls.username)"
+  ></app-input>
+  <app-input
+    inputType="password"
+    label="Password"
+    [control]="$any(authForm.controls.password)"
+  ></app-input>
+  <app-input
+    inputType="password"
+    label="Password Confirmation"
+    [control]="$any(authForm.controls.passwordConfirmation)"
+  ></app-input>
+
+
+  <!--<div class="field">
+    <label>Username</label>
+  Without the brackets, Angular treats the right-hand side as a string literal and sets the property to that static value.
+    <input formControlName="username"/>
+  </div>-->
+
+  <!--Debugging tool
+  {{ authForm.get('username')?.errors | json}}-->
+
+<!-- Div classes with field are replaced with reusable input class
+  <div class="field">
+    <label>Password</label>
+    <input formControlName="password"/>
+  </div>-->
+
+ <!--Debugging tool
+ {{ authForm.get('password')?.errors | json}}-->
+
+ <!-- Div classes with field are replaced with reusable input class
+  <div class="field">
+    <label>Password Confirmation</label>
+    <input formControlName="passwordConfirmation"/>
+  </div>-->
+
+  <!--Debugging tool
+  {{ authForm.get('passwordConfirmation')?.errors | json}}-->
+
+  <!--https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17869648#questions -->
+  <div *ngIf="
+  authForm.get('password').touched &&
+  authForm.get('passwordConfirmation').touched
+  && authForm.errors
+  "
+   class="ui red basic label">
+    <p *ngIf="$any(authForm.errors).passwordsDontMatch">
+      Password and Password Confirmation must match
+    </p>
+    <!--https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17869714#overview-->
+    <p *ngIf="authForm.errors?.['noConnection']">
+      No internet connection detected, failed to sign up
+    </p>
+    <p *ngIf="authForm.errors?.['unknownError']">
+      Unknwon Error occured, Failed to sign up
+    </p>
+  </div>
+
+  <div>
+  <button class="ui submit button primary">
+    Submit
+  </button>
+</div>
+
+
+<!--Debugging tool
+  {{ authForm.errors | json }}-->
+
+</form>

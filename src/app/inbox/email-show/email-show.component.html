@@ -1,0 +1,24 @@
+<!--https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871756#notes-->
+<!-- <div class="header" *ngIf="email"> i salso possible to make the error obsolete when loading the email page (state issue)-->
+<div class="header" >
+  <div>
+    <h3>
+      {{ email.subject }}
+    </h3>
+    <div>
+      Form: <i> {{email.from}}</i>
+    </div>
+    <div>
+      To: <i> {{email.to}}</i>
+    </div>
+  </div>
+  <div>
+    <app-email-reply [email]="email"></app-email-reply>
+  </div>
+</div>
+<!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871796#notes-->
+<div class="ui divider">
+  <div [innerHTML]="email.html">
+    <!-- {{ email.html }}-->
+  </div>
+</div>

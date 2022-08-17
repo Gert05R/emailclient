@@ -1,0 +1,41 @@
+<!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17869556#overview-->
+<div class="field">
+  <label>{{label}}</label>
+  <input *ngIf="controlType === 'input' " [type]="inputType" [formControl]="control" />
+<!--https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884166#notes -->
+  <textarea *ngIf="controlType === 'textarea' " [formControl]="control" ></textarea>
+<!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17869618#questions/15336752 -->
+  <div *ngIf="showErrors()" class="ui pointing red basic label">
+    <!-- <p *ngIf="control.errors.required"> gives error, resolution below -->
+    <p *ngIf="control.errors?.['required']">
+      Value is required
+    </p>
+    <p *ngIf="control.errors.email">
+      Enter a valid email
+    </p>
+    <p *ngIf="control.errors?.['minlength']">
+        Value you entered is
+        {{ control.errors?.['minlength'].actualLength}}
+        Characters long, but it must be atleast
+        {{ control.errors?.['minlength'].requiredLength}}
+        characters
+    </p>
+    <p *ngIf="control.errors?.['maxlength']">
+      Value you entered is
+      <!-- https://stackoverflow.com/questions/70106472/property-fname-comes-from-an-index-signature-so-it-must-be-accessed-with-fn-->
+      {{ control.errors.maxlength.actualLength }}
+      Characters long, but it cannot be longer than
+      {{ control.errors?.['maxlength'].requiredLength}}
+      characters
+    </p>
+    <p *ngIf="control.errors?.['pattern']">
+      Invalid Format
+    </p>
+    <p *ngIf="control.errors?.['nonUniqueUsername']">
+        username is taken
+    </p>
+    <p *ngIf="control.errors?.['noConnection']">
+      Can't tell is username is taken
+    </p>
+  </div>
+</div>

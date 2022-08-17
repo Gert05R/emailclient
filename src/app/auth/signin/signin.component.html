@@ -1,0 +1,29 @@
+<h3> Sign In</h3>
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+  <!-- jthe app input compnent has a lot of logic in displaying validation messages, eyc... https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871116#questions-->
+  <app-input
+    inputType="text"
+    label="Username"
+    [control]="$any(authForm.controls.username)">
+  </app-input>
+  <!-- Rememeber the input type makes the password become dots when typing-->
+  <app-input
+    inputType="password"
+    label="Password"
+    [control]="$any(authForm.controls.password)">
+  </app-input>
+
+  <!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871134#questions-->
+  <div *ngIf="authForm.errors" class="ui red basic label">
+    <p *ngIf="authForm.errors.credentials">
+      Invalid Username or Password
+    </p>
+  </div>
+
+  <div>
+    <button class="ui submit button primary">
+      Submit
+    </button>
+  </div>
+
+</form>

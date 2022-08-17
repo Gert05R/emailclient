@@ -1,0 +1,17 @@
+<!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871434#questions/9229912 -->
+<div class="ui celled list">
+  <div class="item" *ngFor="let email of emails">
+    <!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17871450#questions/9229912-->
+    <a [routerLink]="email.id" routerLinkActive="active">
+    <div class="content">
+      <div class="header trim">
+        <!-- These are the two properties from the return body of the get call to .../emails-->
+        {{ email.subject }}
+      </div>
+      <p class="trim">
+        {{ email.from }}
+      </p>
+    </div>
+  </a>
+  </div>
+</div>

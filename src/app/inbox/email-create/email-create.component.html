@@ -1,0 +1,13 @@
+<!-- https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884118#notes-->
+<button (click)="showModal = true" class="ui button inverted primary fluid">
+  Compose
+</button>
+
+
+<app-modal (dismiss)=" showModal= false" *ngIf="showModal">
+  <div modalTitle>Compose!</div>
+  <!--https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884172#questions-->
+  <app-email-form (emailSubmit)="onSubmit($event)" [email]="email"></app-email-form>
+</app-modal>
+
+

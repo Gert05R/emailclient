@@ -1,0 +1,14 @@
+/*https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884106#notes*/
+.actions:empty {
+  display: none;
+}
+
+.actions-default {
+  display: none;
+}
+
+.actions:empty + .actions-default {
+  display: block;
+}
+
+

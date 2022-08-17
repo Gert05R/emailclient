@@ -1,0 +1,27 @@
+import { Component, ElementRef, OnInit, Output, EventEmitter } from '@angular/core';
+//https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884104#notes
+
+
+@Component({
+  selector: 'app-modal',
+  templateUrl: './modal.component.html',
+  styleUrls: ['./modal.component.css']
+})
+export class ModalComponent implements OnInit {
+  @Output() dismiss = new EventEmitter();
+
+  constructor(private el: ElementRef) { }
+
+  ngOnInit(): void {
+    document.body.appendChild(this.el.nativeElement);
+  }
+
+  ngOnDestroy() {
+    this.el.nativeElement.remove();
+  }
+
+  onDismmissClick() {
+    this.dismiss.emit();
+  }
+
+}

@@ -1,0 +1,7 @@
+/*https://www.udemy.com/course/the-modern-angular-bootcamp/learn/lecture/17884206#questions*/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
